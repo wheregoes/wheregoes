@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300">
+  <style>
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.3; }
+    }
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    .neon { animation: flicker 5s infinite step-end; }
+    .scan { animation: scanline 8s linear infinite; }
+  </style>
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 1  0 0 0 0 0  0 0 0 1.5 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-soft">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 0.8  0 0 0 0 0  0 0 0 0.6 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="900" height="4">
+      <rect width="900" height="2" fill="transparent"/>
+      <rect y="2" width="900" height="2" fill="rgba(0,0,0,0.15)"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0a0a0a" rx="6"/>
+
+  <!-- Matrix rain columns -->
+  <g opacity="0.12" font-family="monospace" font-size="14" fill="#00ff00">
+    <text x="30" y="-10"><animate attributeName="y" from="-20" to="320" dur="6s" repeatCount="indefinite"/>01101</text>
+    <text x="80" y="-10"><animate attributeName="y" from="-40" to="320" dur="4.5s" repeatCount="indefinite"/>10010</text>
+    <text x="130" y="-10"><animate attributeName="y" from="-60" to="320" dur="7s" repeatCount="indefinite"/>11001</text>
+    <text x="180" y="-10"><animate attributeName="y" from="-30" to="320" dur="5.2s" repeatCount="indefinite"/>00110</text>
+    <text x="230" y="-10"><animate attributeName="y" from="-50" to="320" dur="6.8s" repeatCount="indefinite"/>10101</text>
+    <text x="280" y="-10"><animate attributeName="y" from="-15" to="320" dur="4.8s" repeatCount="indefinite"/>01010</text>
+    <text x="570" y="-10"><animate attributeName="y" from="-45" to="320" dur="5.5s" repeatCount="indefinite"/>11010</text>
+    <text x="620" y="-10"><animate attributeName="y" from="-25" to="320" dur="6.3s" repeatCount="indefinite"/>01001</text>
+    <text x="670" y="-10"><animate attributeName="y" from="-55" to="320" dur="4.2s" repeatCount="indefinite"/>10110</text>
+    <text x="720" y="-10"><animate attributeName="y" from="-35" to="320" dur="7.5s" repeatCount="indefinite"/>00101</text>
+    <text x="770" y="-10"><animate attributeName="y" from="-20" to="320" dur="5.8s" repeatCount="indefinite"/>11100</text>
+    <text x="830" y="-10"><animate attributeName="y" from="-65" to="320" dur="6.5s" repeatCount="indefinite"/>01011</text>
+  </g>
+
+  <!-- Outer glow layer -->
+  <text x="450" y="155" text-anchor="middle" fill="#00ff00" font-size="72" font-weight="bold"
+        font-family="'Courier New', monospace" filter="url(#glow-soft)" opacity="0.5">wheregoes</text>
+
+  <!-- Main neon text -->
+  <text x="450" y="155" text-anchor="middle" fill="#00ff00" font-size="72" font-weight="bold"
+        font-family="'Courier New', monospace" filter="url(#glow)" class="neon">wheregoes</text>
+
+  <!-- Subtitle -->
+  <text x="450" y="200" text-anchor="middle" fill="#00aa00" font-size="16"
+        font-family="'Courier New', monospace" opacity="0.6">
+    <animate attributeName="opacity" values="0;0.6;0.6;0" dur="4s" repeatCount="indefinite"/>
+    &gt; just doing things i think are cool _
+  </text>
+
+  <!-- Scanline overlay -->
+  <rect width="100%" height="100%" fill="url(#scanlines)" class="scan" opacity="0.3" rx="6"/>
+
+  <!-- Top/bottom fade -->
+  <rect width="100%" height="40" fill="url(#topfade)" rx="6"/>
+  <defs>
+    <linearGradient id="topfade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="botfade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect y="260" width="100%" height="40" fill="url(#botfade)" rx="6"/>
+
+  <!-- Corner decorations -->
+  <text x="20" y="25" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[SYS.0x00]</text>
+  <text x="790" y="25" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[MEM.OK]</text>
+  <text x="20" y="290" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[NET.UP]</text>
+  <text x="770" y="290" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[BOOT.OK]</text>
+</svg>

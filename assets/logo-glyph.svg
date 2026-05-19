@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="wg">
+  <defs>
+    <linearGradient id="wgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#ff2bd6"/>
+      <stop offset="40%"  stop-color="#8b5cf6"/>
+      <stop offset="75%"  stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+    <filter id="wgGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#070912" stroke="url(#wgGrad)" stroke-width="1.5"/>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="rgba(255,255,255,0.04)"/>
+
+  <g filter="url(#wgGlow)" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+     font-weight="800" font-size="26" fill="url(#wgGrad)">
+    <text x="32" y="41" text-anchor="middle" letter-spacing="-1">wg</text>
+  </g>
+
+  <!-- corner pixels -->
+  <rect x="10" y="50" width="2" height="2" fill="#00ff88"/>
+  <rect x="52" y="10" width="2" height="2" fill="#ff2bd6"/>
+</svg>

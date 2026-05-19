@@ -1,22 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 30">
-  <rect width="100%" height="100%" fill="transparent"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 30" role="presentation">
+  <defs>
+    <linearGradient id="dvLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="18%"  stop-color="#00ff88" stop-opacity="0.55"/>
+      <stop offset="50%"  stop-color="#00ff88" stop-opacity="0.85"/>
+      <stop offset="82%"  stop-color="#00ff88" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="dvGlow" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dvDotGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
 
-  <!-- Center line with glow -->
-  <line x1="100" y1="15" x2="800" y2="15" stroke="#00ff00" stroke-width="0.5" opacity="0.4"/>
+  <rect width="900" height="30" fill="transparent"/>
 
-  <!-- Animated pulse traveling along the line -->
-  <circle r="3" fill="#00ff00" opacity="0.8">
-    <animate attributeName="cx" from="100" to="800" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="15" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3s" repeatCount="indefinite"/>
+  <!-- end brackets -->
+  <text x="68" y="19" fill="#00ff88" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" fill-opacity="0.55" letter-spacing="0.1em">[</text>
+  <text x="822" y="19" fill="#00ff88" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" fill-opacity="0.55" letter-spacing="0.1em">]</text>
+
+  <!-- main hairline -->
+  <line x1="84" y1="15" x2="816" y2="15"
+        stroke="url(#dvLine)" stroke-width="1" filter="url(#dvGlow)"/>
+
+  <!-- accent dots at quarter points -->
+  <circle cx="270" cy="15" r="1.5" fill="#00f0ff" fill-opacity="0.55"/>
+  <circle cx="630" cy="15" r="1.5" fill="#ff2bd6" fill-opacity="0.55"/>
+
+  <!-- center pulse dot -->
+  <circle cx="450" cy="15" r="2.6" fill="#00ff88" filter="url(#dvDotGlow)">
+    <animate attributeName="r" values="2.2;3.4;2.2" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="2.4s" repeatCount="indefinite"/>
   </circle>
-  <circle r="6" fill="none" stroke="#00ff00" stroke-width="0.5" opacity="0.3">
-    <animate attributeName="cx" from="100" to="800" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="15" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;0.3;0.3;0" dur="3s" repeatCount="indefinite"/>
-  </circle>
 
-  <!-- Terminal markers -->
-  <text x="60" y="19" fill="#00ff00" font-size="10" font-family="monospace" opacity="0.3">[</text>
-  <text x="810" y="19" fill="#00ff00" font-size="10" font-family="monospace" opacity="0.3">]</text>
+  <!-- traveling pulse -->
+  <circle r="2.4" fill="#00ff88" filter="url(#dvDotGlow)">
+    <animate attributeName="cx" values="100;820" dur="3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+    <animate attributeName="cy" values="15" dur="3.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.9;0.9;0" keyTimes="0;0.1;0.9;1" dur="3.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="6" fill="none" stroke="#00ff88" stroke-width="0.6">
+    <animate attributeName="cx" values="100;820" dur="3.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+    <animate attributeName="cy" values="15" dur="3.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.45;0.45;0" keyTimes="0;0.1;0.9;1" dur="3.6s" repeatCount="indefinite"/>
+  </circle>
 </svg>

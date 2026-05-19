@@ -1,93 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300">
-  <style>
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0.3; }
-    }
-    @keyframes scanline {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-    .neon { animation: flicker 5s infinite step-end; }
-    .scan { animation: scanline 8s linear infinite; }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-label="wheregoes — just doing things i think are cool">
+  <title>wheregoes</title>
+
   <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 1  0 0 0 0 0  0 0 0 1.5 0"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="glow-soft">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0  0 0 0 0 0.8  0 0 0 0 0  0 0 0 0.6 0"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <pattern id="scanlines" patternUnits="userSpaceOnUse" width="900" height="4">
-      <rect width="900" height="2" fill="transparent"/>
-      <rect y="2" width="900" height="2" fill="rgba(0,0,0,0.15)"/>
+    <!-- prism gradient: magenta → violet → cyan → matrix (110deg ≈ mostly horizontal) -->
+    <linearGradient id="prism" x1="0" y1="0" x2="1" y2="0.34">
+      <stop offset="0%"   stop-color="#ff2bd6"/>
+      <stop offset="35%"  stop-color="#8b5cf6"/>
+      <stop offset="70%"  stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#00ff88"/>
+    </linearGradient>
+
+    <!-- aurora bloom radials -->
+    <radialGradient id="auroraA" cx="18%" cy="22%" r="55%">
+      <stop offset="0%"  stop-color="#00ff88" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="auroraB" cx="82%" cy="28%" r="50%">
+      <stop offset="0%"  stop-color="#00f0ff" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="auroraC" cx="58%" cy="92%" r="55%">
+      <stop offset="0%"  stop-color="#ff2bd6" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#ff2bd6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="auroraD" cx="92%" cy="88%" r="40%">
+      <stop offset="0%"  stop-color="#8b5cf6" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- glass card inner highlight -->
+    <linearGradient id="glassFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.10)"/>
+      <stop offset="35%"  stop-color="rgba(255,255,255,0.02)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.06)"/>
+    </linearGradient>
+    <linearGradient id="glassRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="40%"  stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.10)"/>
+    </linearGradient>
+
+    <!-- vignette darkening edges -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="45%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+    </radialGradient>
+
+    <!-- scanline overlay -->
+    <pattern id="scan" patternUnits="userSpaceOnUse" width="900" height="3">
+      <rect width="900" height="1" fill="#00ff88" fill-opacity="0.04"/>
     </pattern>
+
+    <!-- matrix text glow filter -->
+    <filter id="matrixGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- bigger soft halo behind wordmark -->
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="prismGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="cardClip">
+      <rect x="16" y="16" width="868" height="288" rx="20"/>
+    </clipPath>
   </defs>
 
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#0a0a0a" rx="6"/>
+  <!-- void base -->
+  <rect width="900" height="320" rx="22" fill="#03040a"/>
 
-  <!-- Matrix rain columns -->
-  <g opacity="0.12" font-family="monospace" font-size="14" fill="#00ff00">
-    <text x="30" y="-10"><animate attributeName="y" from="-20" to="320" dur="6s" repeatCount="indefinite"/>01101</text>
-    <text x="80" y="-10"><animate attributeName="y" from="-40" to="320" dur="4.5s" repeatCount="indefinite"/>10010</text>
-    <text x="130" y="-10"><animate attributeName="y" from="-60" to="320" dur="7s" repeatCount="indefinite"/>11001</text>
-    <text x="180" y="-10"><animate attributeName="y" from="-30" to="320" dur="5.2s" repeatCount="indefinite"/>00110</text>
-    <text x="230" y="-10"><animate attributeName="y" from="-50" to="320" dur="6.8s" repeatCount="indefinite"/>10101</text>
-    <text x="280" y="-10"><animate attributeName="y" from="-15" to="320" dur="4.8s" repeatCount="indefinite"/>01010</text>
-    <text x="570" y="-10"><animate attributeName="y" from="-45" to="320" dur="5.5s" repeatCount="indefinite"/>11010</text>
-    <text x="620" y="-10"><animate attributeName="y" from="-25" to="320" dur="6.3s" repeatCount="indefinite"/>01001</text>
-    <text x="670" y="-10"><animate attributeName="y" from="-55" to="320" dur="4.2s" repeatCount="indefinite"/>10110</text>
-    <text x="720" y="-10"><animate attributeName="y" from="-35" to="320" dur="7.5s" repeatCount="indefinite"/>00101</text>
-    <text x="770" y="-10"><animate attributeName="y" from="-20" to="320" dur="5.8s" repeatCount="indefinite"/>11100</text>
-    <text x="830" y="-10"><animate attributeName="y" from="-65" to="320" dur="6.5s" repeatCount="indefinite"/>01011</text>
+  <!-- aurora bloom (clipped to card) -->
+  <g clip-path="url(#cardClip)">
+    <rect width="900" height="320" fill="url(#auroraA)">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect width="900" height="320" fill="url(#auroraB)">
+      <animate attributeName="opacity" values="1;0.7;1" dur="11s" repeatCount="indefinite"/>
+    </rect>
+    <rect width="900" height="320" fill="url(#auroraC)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="13s" repeatCount="indefinite"/>
+    </rect>
+    <rect width="900" height="320" fill="url(#auroraD)"/>
+
+    <!-- scanlines -->
+    <rect width="900" height="320" fill="url(#scan)"/>
+
+    <!-- vignette -->
+    <rect width="900" height="320" fill="url(#vignette)"/>
+
+    <!-- glass card fill highlight -->
+    <rect x="16" y="16" width="868" height="288" rx="20" fill="url(#glassFill)"/>
   </g>
 
-  <!-- Outer glow layer -->
-  <text x="450" y="155" text-anchor="middle" fill="#00ff00" font-size="72" font-weight="bold"
-        font-family="'Courier New', monospace" filter="url(#glow-soft)" opacity="0.5">wheregoes</text>
+  <!-- glass card rim stroke -->
+  <rect x="16.5" y="16.5" width="867" height="287" rx="20" fill="none" stroke="url(#glassRim)" stroke-width="1"/>
+  <rect x="17.5" y="17.5" width="865" height="285" rx="19" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
 
-  <!-- Main neon text -->
-  <text x="450" y="155" text-anchor="middle" fill="#00ff00" font-size="72" font-weight="bold"
-        font-family="'Courier New', monospace" filter="url(#glow)" class="neon">wheregoes</text>
+  <!-- ─── corner status tags + binary noise top/bottom ───────── -->
+  <g font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="2.2">
+    <!-- top row -->
+    <text x="46" y="50" fill="#00ff88" fill-opacity="0.78">
+      [SYS.0x00]
+      <animate attributeName="fill-opacity" values="0.78;0.78;0.45;0.78" keyTimes="0;0.78;0.8;1" dur="4s" repeatCount="indefinite"/>
+    </text>
+    <text x="450" y="50" fill="#00ff88" fill-opacity="0.18" text-anchor="middle" letter-spacing="3">0010 11001 00110 10101 11010 01001</text>
+    <text x="854" y="50" fill="#00ff88" fill-opacity="0.78" text-anchor="end">[MEM.OK]</text>
 
-  <!-- Subtitle -->
-  <text x="450" y="200" text-anchor="middle" fill="#00aa00" font-size="16"
-        font-family="'Courier New', monospace" opacity="0.6">
-    <animate attributeName="opacity" values="0;0.6;0.6;0" dur="4s" repeatCount="indefinite"/>
-    &gt; just doing things i think are cool _
-  </text>
+    <!-- bottom row -->
+    <text x="46" y="290" fill="#00ff88" fill-opacity="0.78">
+      [NET.UP]
+      <animate attributeName="fill-opacity" values="0.78;0.45;0.78;0.78" keyTimes="0;0.05;0.07;1" dur="5s" repeatCount="indefinite"/>
+    </text>
+    <text x="450" y="290" fill="#00ff88" fill-opacity="0.12" text-anchor="middle" letter-spacing="3">11001 01101 00110 01001 10110 11010</text>
+    <text x="854" y="290" fill="#00ff88" fill-opacity="0.78" text-anchor="end">[BOOT.OK]</text>
+  </g>
 
-  <!-- Scanline overlay -->
-  <rect width="100%" height="100%" fill="url(#scanlines)" class="scan" opacity="0.3" rx="6"/>
+  <!-- ─── wordmark ────────────────────────────────────────────── -->
+  <!-- matrix halo for "where" only (so prism colors stay clean) -->
+  <g filter="url(#softGlow)" opacity="0.32">
+    <text x="450" y="186" text-anchor="end"
+          font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+          font-size="92" font-weight="800" letter-spacing="-4"
+          fill="#00ff88">where</text>
+  </g>
+  <!-- prism halo for "goes" only -->
+  <g filter="url(#softGlow)" opacity="0.42">
+    <text x="450" y="186" text-anchor="start"
+          font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+          font-size="92" font-weight="800" letter-spacing="-4"
+          fill="url(#prism)">goes</text>
+  </g>
 
-  <!-- Top/bottom fade -->
-  <rect width="100%" height="40" fill="url(#topfade)" rx="6"/>
-  <defs>
-    <linearGradient id="topfade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="botfade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#0a0a0a"/>
-    </linearGradient>
-  </defs>
-  <rect y="260" width="100%" height="40" fill="url(#botfade)" rx="6"/>
+  <!-- "where" — anchored at center, ends at x=450 -->
+  <text x="450" y="186" text-anchor="end"
+        font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+        font-size="92" font-weight="800" letter-spacing="-4"
+        fill="#e8ffef" filter="url(#matrixGlow)">where</text>
 
-  <!-- Corner decorations -->
-  <text x="20" y="25" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[SYS.0x00]</text>
-  <text x="790" y="25" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[MEM.OK]</text>
-  <text x="20" y="290" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[NET.UP]</text>
-  <text x="770" y="290" fill="#00ff00" font-size="12" font-family="monospace" opacity="0.3">[BOOT.OK]</text>
+  <!-- "goes" — anchored at center, starts at x=450; own bbox so prism stops fully cover -->
+  <text x="450" y="186" text-anchor="start"
+        font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+        font-size="92" font-weight="800" letter-spacing="-4"
+        fill="url(#prism)" filter="url(#prismGlow)">goes</text>
+
+  <!-- ─── subtitle pill (glass capsule) ───────────────────────── -->
+  <g transform="translate(450 230)">
+    <rect x="-210" y="0" width="420" height="38" rx="19"
+          fill="#ffffff" fill-opacity="0.04"
+          stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+    <rect x="-210" y="0" width="420" height="38" rx="19"
+          fill="url(#glassFill)" opacity="0.5"/>
+    <text x="-190" y="25"
+          font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+          font-size="14" font-weight="600" fill="#00ff88">&gt;</text>
+    <text x="-172" y="25"
+          font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+          font-size="14" fill="#e8ffef" letter-spacing="0.3">just doing things i think are cool</text>
+    <text x="185" y="25"
+          font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace"
+          font-size="16" font-weight="700" fill="#00ff88" text-anchor="end">_
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.05s" repeatCount="indefinite"/>
+    </text>
+  </g>
 </svg>

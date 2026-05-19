@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 110" role="img" aria-label="footer wave">
+  <defs>
+    <!-- prism wave gradient -->
+    <linearGradient id="fwGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ff2bd6">
+        <animate attributeName="stop-color" values="#ff2bd6;#8b5cf6;#00f0ff;#00ff88;#ff2bd6" dur="14s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="35%"  stop-color="#8b5cf6">
+        <animate attributeName="stop-color" values="#8b5cf6;#00f0ff;#00ff88;#ff2bd6;#8b5cf6" dur="14s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="70%"  stop-color="#00f0ff">
+        <animate attributeName="stop-color" values="#00f0ff;#00ff88;#ff2bd6;#8b5cf6;#00f0ff" dur="14s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#00ff88">
+        <animate attributeName="stop-color" values="#00ff88;#ff2bd6;#8b5cf6;#00f0ff;#00ff88" dur="14s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <radialGradient id="fwBloom" cx="50%" cy="110%" r="70%">
+      <stop offset="0%"  stop-color="#00ff88" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="fwFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="rgba(255,255,255,0.10)"/>
+      <stop offset="30%" stop-color="rgba(255,255,255,0.02)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.06)"/>
+    </linearGradient>
+
+    <filter id="fwBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="fwBlurSoft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+
+    <clipPath id="fwClip">
+      <rect x="1" y="1" width="898" height="108" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#fwClip)">
+    <rect x="1" y="1" width="898" height="108" rx="18" fill="#03040a"/>
+    <rect x="1" y="1" width="898" height="108" fill="url(#fwBloom)"/>
+
+    <!-- back wave (blurred, low opacity) -->
+    <path d="M 0 60 Q 112 22, 225 58 T 450 58 T 675 58 T 900 58 L 900 110 L 0 110 Z"
+          fill="url(#fwGrad)" opacity="0.35" filter="url(#fwBlur)"/>
+
+    <!-- mid wave -->
+    <path d="M 0 72 Q 112 38, 225 68 T 450 68 T 675 68 T 900 68 L 900 110 L 0 110 Z"
+          fill="url(#fwGrad)" opacity="0.65" filter="url(#fwBlurSoft)"/>
+
+    <!-- front wave (crisp) -->
+    <path d="M 0 82 Q 112 56, 225 78 T 450 78 T 675 78 T 900 78 L 900 110 L 0 110 Z"
+          fill="url(#fwGrad)" opacity="0.88"/>
+
+    <!-- top hairline trail -->
+    <path d="M 0 60 Q 112 22, 225 58 T 450 58 T 675 58 T 900 58"
+          fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.55" filter="url(#fwBlurSoft)"/>
+
+    <!-- glass top sheen -->
+    <rect x="1" y="1" width="898" height="108" rx="18" fill="url(#fwFade)" opacity="0.5"/>
+
+    <!-- floating microdots -->
+    <g fill="#e8ffef">
+      <circle cx="120" cy="42" r="0.9" opacity="0.7">
+        <animate attributeName="cy" values="42;38;42" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="780" cy="46" r="0.7" opacity="0.55">
+        <animate attributeName="cy" values="46;41;46" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="500" cy="36" r="1.1" opacity="0.8">
+        <animate attributeName="cy" values="36;30;36" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="320" cy="44" r="0.6" opacity="0.45">
+        <animate attributeName="cy" values="44;39;44" dur="3.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="640" cy="38" r="0.8" opacity="0.7">
+        <animate attributeName="cy" values="38;33;38" dur="4.4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- closing terminal line -->
+    <text x="450" y="30" text-anchor="middle"
+          font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+          font-size="11" fill="#00ff88" fill-opacity="0.85" letter-spacing="2.4">
+      [ exit 0 ]
+    </text>
+  </g>
+
+  <!-- outer rim -->
+  <rect x="1.5" y="1.5" width="897" height="107" rx="18" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+</svg>

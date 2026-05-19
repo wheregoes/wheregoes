@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 160" role="img" aria-label="byd-apps">
+  <title>byd-apps</title>
+  <defs>
+    <linearGradient id="paFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="rgba(255,255,255,0.07)"/>
+      <stop offset="35%" stop-color="rgba(255,255,255,0.01)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.04)"/>
+    </linearGradient>
+    <linearGradient id="paRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="rgba(255,255,255,0.20)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.10)"/>
+    </linearGradient>
+    <radialGradient id="paBloom" cx="15%" cy="0%" r="80%">
+      <stop offset="0%"  stop-color="#00f0ff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#00f0ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="paScan" patternUnits="userSpaceOnUse" width="440" height="3">
+      <rect width="440" height="1" fill="#00f0ff" fill-opacity="0.04"/>
+    </pattern>
+    <filter id="paGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="paClip">
+      <rect x="1" y="1" width="438" height="158" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#paClip)">
+    <rect x="1" y="1" width="438" height="158" rx="18" fill="#070912"/>
+    <rect x="1" y="1" width="438" height="158" fill="url(#paBloom)"/>
+    <rect x="1" y="1" width="438" height="158" fill="url(#paFill)"/>
+    <rect x="1" y="1" width="438" height="158" fill="url(#paScan)"/>
+  </g>
+  <rect x="1.5" y="1.5" width="437" height="157" rx="18" fill="none" stroke="url(#paRim)" stroke-width="1"/>
+
+  <text x="22" y="24" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+        font-size="9" fill="#00f0ff" fill-opacity="0.55" letter-spacing="1.6">[REPO.0x02]</text>
+
+  <text x="22" y="58" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+        font-size="19" font-weight="700" fill="#00f0ff" filter="url(#paGlow)" letter-spacing="-0.4">
+    <tspan fill-opacity="0.5">$ </tspan>byd-apps
+  </text>
+
+  <text x="22" y="86" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+        font-size="11.5" fill="#8fb8a0" letter-spacing="0">
+    <tspan x="22" dy="0">custom android apps for byd vehicles —</tspan>
+    <tspan x="22" dy="16">door sounds, can bus tools. no root needed.</tspan>
+  </text>
+
+  <g transform="translate(22 134)">
+    <circle cx="4" cy="-3" r="4" fill="#00f0ff">
+      <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="14" y="0" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+          font-size="10" fill="#00f0ff" letter-spacing="0.4">Kotlin · Android</text>
+  </g>
+  <g transform="translate(418 134)">
+    <text text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace"
+          font-size="10" fill="#4a6b58" letter-spacing="0.6">→ open repo</text>
+  </g>
+</svg>

@@ -10,16 +10,13 @@
 
 <img src="assets/section-projects.svg" width="100%" alt="0x01 — $ cat /proc/projects — [OK]"/>
 
-<table align="center" width="100%">
-<tr>
-<td width="50%" align="center">
-  <a href="https://github.com/wheregoes/byd-dolphin-hacking"><img src="assets/project-dolphin.svg" alt="byd-dolphin-hacking — reverse engineering BYD Dolphin head unit (CAN bus, AVAS, NFC, OTA)" width="100%"/></a>
-</td>
-<td width="50%" align="center">
-  <a href="https://github.com/wheregoes/byd-apps"><img src="assets/project-apps.svg" alt="byd-apps — custom Android apps for BYD vehicles (door sounds, CAN bus tools)" width="100%"/></a>
-</td>
-</tr>
-</table>
+<img src="assets/project-grid.svg" width="100%" alt="byd-dolphin-hacking — reverse engineering BYD Dolphin head unit (CAN bus, AVAS, NFC, OTA) · byd-apps — custom Android apps for BYD vehicles (door sounds, CAN bus tools)"/>
+
+<div align="center">
+
+[`→ byd-dolphin-hacking`](https://github.com/wheregoes/byd-dolphin-hacking) &nbsp;·&nbsp; [`→ byd-apps`](https://github.com/wheregoes/byd-apps)
+
+</div>
 
 <img src="assets/divider.svg" width="100%" alt="—"/>
 

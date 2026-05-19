@@ -73,6 +73,6 @@
 
 <div align="center">
 
-<sub>built with <code>$vim</code> · <code>$coffee</code> · <code>$insomnia</code> &nbsp;::&nbsp; made in <b>Earth</b></sub>
+<sub>built with <code>$vim</code> · <code>$coffee</code> · <code>$insomnia</code></sub>
 
 </div>

@@ -32,9 +32,6 @@
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=wheregoes&show_icons=true&bg_color=0d1117&title_color=00ff00&text_color=00ff00&icon_color=00ff00&border_color=00ff00&hide_border=false&count_private=true" height="165" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=wheregoes&layout=compact&bg_color=0d1117&title_color=00ff00&text_color=00ff00&icon_color=00ff00&border_color=00ff00&hide_border=false" height="165" />
-
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=wheregoes&background=0d1117&border=00ff00&stroke=00ff00&ring=00ff00&fire=00ff00&currStreakNum=00ff00&sideNums=00ff00&currStreakLabel=00ff00&sideLabels=00ff00&dates=c9d1d9" />
 
 </div>

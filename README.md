@@ -17,20 +17,12 @@
 
 ### `$ cat /proc/projects`
 
-```
-drwxr-xr-x  wheregoes/byd-dolphin-hacking
-    Reverse engineering the BYD Dolphin head unit
-    CAN bus · AVAS · NFC keys · OTA · DiLink 3 / Android 10
-
-drwxr-xr-x  wheregoes/byd-apps
-    Custom Android apps for BYD electric vehicles
-    Door sounds · CAN bus tools · No root needed
-```
-
 <div align="center">
 
-[![byd-dolphin-hacking](https://github-readme-stats.vercel.app/api/pin/?username=wheregoes&repo=byd-dolphin-hacking&bg_color=0d1117&title_color=00ff00&text_color=c9d1d9&icon_color=00ff00&border_color=00ff00)](https://github.com/wheregoes/byd-dolphin-hacking)
-[![byd-apps](https://github-readme-stats.vercel.app/api/pin/?username=wheregoes&repo=byd-apps&bg_color=0d1117&title_color=00ff00&text_color=c9d1d9&icon_color=00ff00&border_color=00ff00)](https://github.com/wheregoes/byd-apps)
+| | |
+|---|---|
+| [`byd-dolphin-hacking`](https://github.com/wheregoes/byd-dolphin-hacking) | Reverse engineering BYD Dolphin head unit — CAN bus, AVAS, NFC, OTA |
+| [`byd-apps`](https://github.com/wheregoes/byd-apps) | Custom Android apps for BYD vehicles — door sounds, CAN bus tools |
 
 </div>
 

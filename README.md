@@ -31,6 +31,16 @@
 
 <img src="assets/divider.svg" width="100%"/>
 
+### `$ neofetch`
+
+<div align="center">
+
+<img src="assets/metrics.svg" alt="Metrics" width="100%"/>
+
+</div>
+
+<img src="assets/divider.svg" width="100%"/>
+
 ### `$ history`
 
 <div align="center">

@@ -51,9 +51,9 @@
   <b>    5</b> repositories watched
 </div>
 <div class="stdin"><span class="ps1-path">wheregoes@metrics</span>:<span class="ps1-location">~</span># ls -lh github/repositories</div><div class="stdout">Total 13 repositories - 16.5 MB
--r--  <b>   55</b>  stargazers
+-r--  <b>   57</b>  stargazers
 -r--  <b>   15</b>  forks
--r--  <b>    7</b>  watchers
+-r--  <b>    8</b>  watchers
 dr-x  <b>   10</b>  packages
 dr-x         LICENSE
 -r--         └── MIT
@@ -1902,6 +1902,11 @@ dr-x         LICENSE
                       <path fill="#ebedf0" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1 1.7,2 z"/>
                     </g></g><g transform="translate(88.39999999999999, 52)">
                     <g transform="translate(0, 6)">
+                      <path fill="#ebedf0" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
+                      <path fill="#ebedf0" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,2 0,1 z"/>
+                      <path fill="#ebedf0" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1 1.7,2 z"/>
+                    </g>
+                    <g transform="translate(-1.7, 7)">
                       <path fill="#ebedf0" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
                       <path fill="#ebedf0" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,2 0,1 z"/>
                       <path fill="#ebedf0" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1 1.7,2 z"/>
